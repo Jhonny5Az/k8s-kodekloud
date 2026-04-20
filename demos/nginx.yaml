@@ -3,7 +3,7 @@ kind: Pod
 metadata:
   name: testapp
   labels:
-    env: development
+    app: myapp
 spec:
   containers:
     - name: nginx-image

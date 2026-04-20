@@ -13,3 +13,4 @@ spec: //Depending of the object(dict)
           image: nginx
 
 ```
+# Yaml k8s replicaset
