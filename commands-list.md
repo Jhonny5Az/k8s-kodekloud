@@ -44,8 +44,24 @@ kubectl scale --replicas=6 -f replicaset-definition.yml
 kubectl scale --replicas=6 replicaset
 ```
 
-# Deployments
+## Deployments
+```
+kubectl get deployments
+kubectl get deployment my-first-deployment -o yaml
+kubectl describe deployment myapp-deployment
+kubectl apply -f deployment-definition.yml
+kubectl set image deployment/myapp-deployment \ nginx=nginx:1.9.1
+kubectl set image deploy frontend simple-webapp=kodekloud/webapp-color:v2
+kubectl create -f .\deployment\deployment.yaml --record
+```
 
+## Rollout
+```
+kubectl rollout undo deployment myapp-deployment
+kubectl rollout status deployment/myapp-deployment
+kubectl rollout history deployment/myapp-deployment
+
+```
 
 ## See all resources 
 ```

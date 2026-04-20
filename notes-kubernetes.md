@@ -14,3 +14,8 @@ spec: //Depending of the object(dict)
 
 ```
 # Yaml k8s replicaset
+
+# Deployments
+## Rollout and Versioning
+Recreate - destroy all and deploy new ones(application down)
+Rolling updates(default) - Bring down one by one
