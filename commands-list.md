@@ -28,6 +28,10 @@ kubectl delete pod nginx
 ```
 kubectl apply -f sample.yaml
 ```
+## See all resources 
+```
+kubectl get all
+```
 
 ## Replica Set
 > Commands
@@ -60,10 +64,12 @@ kubectl create -f .\deployment\deployment.yaml --record
 kubectl rollout undo deployment myapp-deployment
 kubectl rollout status deployment/myapp-deployment
 kubectl rollout history deployment/myapp-deployment
-
 ```
 
-## See all resources 
+## Service
+> NodePort
 ```
-kubectl get all
+kubectl create -f service-definition.yml
+kubectl get service || kubectl get svc
 ```
+
