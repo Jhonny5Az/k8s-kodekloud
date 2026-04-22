@@ -19,3 +19,7 @@ spec: //Depending of the object(dict)
 ## Rollout and Versioning
 Recreate - destroy all and deploy new ones(application down)
 Rolling updates(default) - Bring down one by one
+
+
+# Github repository example
+https://github.com/kodekloudhub/example-voting-app

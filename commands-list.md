@@ -32,6 +32,15 @@ kubectl apply -f sample.yaml
 ```
 kubectl get all
 ```
+## Delete all
+```
+kubectl delete -f .
+```
+
+## Get Node configuration
+```
+kubectl get node -o wide
+```
 
 ## Replica Set
 > Commands
@@ -57,6 +66,8 @@ kubectl apply -f deployment-definition.yml
 kubectl set image deployment/myapp-deployment \ nginx=nginx:1.9.1
 kubectl set image deploy frontend simple-webapp=kodekloud/webapp-color:v2
 kubectl create -f .\deployment\deployment.yaml --record
+> Scale  deployment
+kubectl scale deployment vote --replicas=5
 ```
 
 ## Rollout
