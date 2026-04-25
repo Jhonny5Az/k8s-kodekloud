@@ -1,10 +1,28 @@
+# Define the Namespace
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: dev
+---
+# Get Pod
 apiVersion: v1
 kind: Pod
 metadata:
   name: testapp
+  namespace: dev
   labels:
     app: myapp
 spec:
   containers:
     - name: nginx-image
       image: nginx
+      # Resource Limits
+      resources:
+        requests:
+          memory: "128Mi"
+          cpu: "250m"  # 0.25 CPU cores
+        limits:
+          memory: "256Mi"
+          cpu: "500m"  # 0.5 CPU cores
+      ports:
+      - containerPort: 80

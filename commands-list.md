@@ -84,3 +84,9 @@ kubectl create -f service-definition.yml
 kubectl get service || kubectl get svc
 ```
 
+
+## Namespace
+```
+Create Namespace: kubectl create namespace my-namespace
+Create Pod: kubectl run my-pod --image=nginx --namespace=my-namespace 
+```

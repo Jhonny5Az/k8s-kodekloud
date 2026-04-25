@@ -23,3 +23,6 @@ Rolling updates(default) - Bring down one by one
 
 # Github repository example
 https://github.com/kodekloudhub/example-voting-app
+
+
+# kubeadm tool to boostrap the configuration
