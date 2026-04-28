@@ -90,3 +90,28 @@ kubectl get service || kubectl get svc
 Create Namespace: kubectl create namespace my-namespace
 Create Pod: kubectl run my-pod --image=nginx --namespace=my-namespace 
 ```
+
+## Cronjobs
+```
+kubectl create cronjob my-job --image=busybox --schedule="*/5 * * * *" -- date
+kubectl get cronjob
+kubectl logs <pod-name>
+trigger without waiting: kubectl create job --from=cronjob/hello-cronjob manual-run-01
+```
+
+## Jobs
+```
+Generate and save to file:
+kubectl create job my-job --image=perl:5.34 --dry-run=client -o yaml > job-template.yaml
+Create from a CronJob template:
+kubectl create job manual-run --from=cronjob/my-cronjob
+kubectl logs -l job-name=sleep-job
+kubectl get jobs
+```
+
+## Jobs
+```
+kubectl exec time-check -n devops -- cat /opt/dba/time/time-check.log
+kubectl exec time-check -n devops -- ps aux
+kubectl exec time-check -n devops -- df -h | grep dba
+```
