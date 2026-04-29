@@ -115,3 +115,10 @@ kubectl exec time-check -n devops -- cat /opt/dba/time/time-check.log
 kubectl exec time-check -n devops -- ps aux
 kubectl exec time-check -n devops -- df -h | grep dba
 ```
+
+## Describe configmaps
+```
+kubectl get pod
+kubectl get configmap
+kubectl describe configmap nginx-config
+```
