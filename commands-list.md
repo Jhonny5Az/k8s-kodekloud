@@ -40,6 +40,7 @@ kubectl delete -f .
 ## Get Node configuration
 ```
 kubectl get node -o wide
+kubectl exec -it <pod-name> -- /bin/bash
 ```
 
 ## Replica Set
@@ -122,3 +123,48 @@ kubectl get pod
 kubectl get configmap
 kubectl describe configmap nginx-config
 ```
+## Download the pod definition and modify the conf
+```
+kubectl get pod nginx-phpfpm -o yaml > /tmp/nginx.yaml
+sed -i 's|/usr/share/nginx/html|/var/www/html|g' /tmp/nginx.yaml
+kubectl replace -f /tmp/nginx.yaml --force
+```
+## Copy to container file
+```
+kubectl cp /home/thor/index.php nginx-phpfpm:/var/www/html -c nginx-container
+```
+## Get VPC and pod ip assigned
+```
+aws ec2 describe-vpcs --query 'Vpcs[*].{VpcId:VpcId,CidrBlock:CidrBlock}' --output table
+kubectl get pod nginx -o jsonpath='{.status.podIP}'
+```
+
+curl -o aws-k8s-cni.yaml https://raw.githubusercontent.com/aws/amazon-vpc-cni-k8s/master/config/master/aws-k8s-cni.yaml
+
+
+## Utility AWS eksdemo - eksctl
+```
+eksdemo get clusters
+eksdemo get vpc
+eksdemo get subnets
+eksdemo get network-interface
+kubectl logs -n kube-system aws-node-g9h8w -c aws-vpc-cni-init
+```
+## Get ec2 instance id of node
+```
+kubectl get nodes -o custom-columns=NAME:.metadata.name,INSTANCE_ID:.spec.providerID
+```
+
+## Debug a Node
+```
+# 1. Identify the node name
+kubectl get nodes
+
+# 2. Start a debug session on the target node
+kubectl debug node/<NODE_NAME> -it --image=ubuntu
+```
+
+aws ssm start-session --target i-038904693471f4a3a
+ip a | less
+ip route show
+ip -6 route shown
